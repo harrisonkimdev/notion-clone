@@ -4,6 +4,7 @@ import LandingPage from "@/components/LandingPage"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { signIn, signOut, useSession } from "next-auth/react"
+import Image from "next/image"
 
 export default function Home() {
   const { data: session, status } = useSession()
@@ -21,8 +22,12 @@ export default function Home() {
       <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
         <div className="max-w-md w-full space-y-8 p-8 bg-white rounded-lg shadow-lg">
           <div className="text-center">
+            <Image src="/logos/logo-web.png" alt="Pile Hive Logo"
+              width={192} height={192}
+              className="mx-auto"
+            />
             <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
-              Welcome to Pile Hive
+              Welcome!
             </h2>
             <p className="mt-2 text-sm text-gray-600">
               Sign in to start organizing your documents into piles
@@ -31,7 +36,7 @@ export default function Home() {
           <div>
             <Button
               onClick={() => signIn("google")}
-              className="w-full"
+              className="w-full bg-stone-700 hover:bg-stone-600 text-white"
               size="lg"
             >
               Sign in with Google
