@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Notion Clone",
-  description: "A Notion clone built with Next.js, TypeScript, and Prisma",
+  title: "Pile Hive",
+  description: "A pile-based document organization app built with Next.js, TypeScript, and Prisma",
 };
 
 export default function RootLayout({

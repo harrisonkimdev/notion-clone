@@ -22,10 +22,10 @@ export default function Home() {
         <div className="max-w-md w-full space-y-8 p-8 bg-white rounded-lg shadow-lg">
           <div className="text-center">
             <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
-              Welcome to Notion Clone
+              Welcome to Pile Hive
             </h2>
             <p className="mt-2 text-sm text-gray-600">
-              Sign in to start creating and organizing your documents
+              Sign in to start organizing your documents into piles
             </p>
           </div>
           <div>
@@ -49,7 +49,7 @@ export default function Home() {
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center space-x-4">
               <h1 className="text-xl font-semibold text-gray-900">
-                Notion Clone
+                Pile Hive
               </h1>
             </div>
             <div className="flex items-center space-x-4">

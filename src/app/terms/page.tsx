@@ -64,7 +64,7 @@ export default function TermsOfService() {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibent mb-4">6. Privacy</h2>
+          <h2 className="text-2xl font-semibold mb-4">6. Privacy</h2>
           <p className="mb-4">
             Your privacy is important to us. Please review our Privacy Policy, which also governs
             your use of the service, to understand our practices.
@@ -118,7 +118,7 @@ export default function TermsOfService() {
             If you have any questions about these Terms of Service, please contact us at:
           </p>
           <p className="mb-4">
-            Email: legal@notionclone.com
+            Email: {process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'legal@notionclone.com'}
           </p>
         </section>
       </div>

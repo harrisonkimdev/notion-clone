@@ -59,7 +59,7 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
-// Notion clone models
+// Pile Hive models
 model Document {
   id          String   @id @default(cuid())
   title       String

@@ -41,10 +41,10 @@ Hereâ€™s a polished **README.md** draft you can drop straight into your repo ðŸ‘
 
 ---
 
-# Notion-Clone (Next.js + gpt-oss-20b)
+# Pile Hive (Next.js + gpt-oss-20b)
 
-A Notion-style collaborative workspace built with **Next.js**, **PostgreSQL**, and **AI features powered by gpt-oss-20b**.
-The project starts as a lightweight document editor and evolves into a fully collaborative knowledge base.
+A pile-based document organization workspace built with **Next.js**, **PostgreSQL**, and **AI features powered by gpt-oss-20b**.
+Organize your documents into smart piles with drag-and-drop functionality and AI-powered categorization.
 
 ---
 
@@ -108,8 +108,8 @@ prisma/
 ### 1. Clone & install
 
 ```bash
-git clone https://github.com/yourusername/notion-clone.git
-cd notion-clone
+git clone https://github.com/yourusername/pile-hive.git
+cd pile-hive
 npm install
 ```
 
@@ -118,7 +118,7 @@ npm install
 Create `.env`:
 
 ```env
-DATABASE_URL="postgresql://user:password@localhost:5432/notionclone"
+DATABASE_URL="postgresql://user:password@localhost:5432/pilehive"
 NEXTAUTH_SECRET="your-random-secret"
 NEXTAUTH_URL="http://localhost:3000"
 AI_BASE_URL="http://localhost:11434/v1"   # Ollama or llama.cpp
