@@ -2,7 +2,7 @@ export default function TermsOfService() {
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">
       <h1 className="text-3xl font-bold mb-8">Terms of Service</h1>
-      
+
       <div className="prose prose-lg max-w-none">
         <p className="text-gray-600 mb-6">
           Last updated: {new Date().toLocaleDateString()}
@@ -11,8 +11,8 @@ export default function TermsOfService() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">1. Acceptance of Terms</h2>
           <p className="mb-4">
-            By accessing and using this service, you accept and agree to be bound by the terms 
-            and provision of this agreement. If you do not agree to abide by the above, please 
+            By accessing and using this service, you accept and agree to be bound by the terms
+            and provision of this agreement. If you do not agree to abide by the above, please
             do not use this service.
           </p>
         </section>
@@ -20,9 +20,9 @@ export default function TermsOfService() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">2. Description of Service</h2>
           <p className="mb-4">
-            Our service provides a collaborative workspace platform that allows users to create, 
-            edit, and share documents, databases, and other content. The service is provided 
-            "as is" and we reserve the right to modify or discontinue the service at any time.
+            Our service provides a collaborative workspace platform that allows users to create,
+            edit, and share documents, databases, and other content. The service is provided
+            &quot;as is&quot; and we reserve the right to modify or discontinue the service at any time.
           </p>
         </section>
 
@@ -57,8 +57,8 @@ export default function TermsOfService() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">5. Content Ownership</h2>
           <p className="mb-4">
-            You retain ownership of content you create and upload to our service. By using our service, 
-            you grant us a limited license to use, store, and display your content solely for the 
+            You retain ownership of content you create and upload to our service. By using our service,
+            you grant us a limited license to use, store, and display your content solely for the
             purpose of providing the service to you.
           </p>
         </section>
@@ -66,7 +66,7 @@ export default function TermsOfService() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibent mb-4">6. Privacy</h2>
           <p className="mb-4">
-            Your privacy is important to us. Please review our Privacy Policy, which also governs 
+            Your privacy is important to us. Please review our Privacy Policy, which also governs
             your use of the service, to understand our practices.
           </p>
         </section>
@@ -74,7 +74,7 @@ export default function TermsOfService() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">7. Service Availability</h2>
           <p className="mb-4">
-            We strive to maintain high service availability but cannot guarantee uninterrupted access. 
+            We strive to maintain high service availability but cannot guarantee uninterrupted access.
             We may temporarily suspend the service for maintenance, updates, or other operational reasons.
           </p>
         </section>
@@ -82,8 +82,8 @@ export default function TermsOfService() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">8. Limitation of Liability</h2>
           <p className="mb-4">
-            In no event shall we be liable for any indirect, incidental, special, consequential, 
-            or punitive damages, including without limitation, loss of profits, data, use, goodwill, 
+            In no event shall we be liable for any indirect, incidental, special, consequential,
+            or punitive damages, including without limitation, loss of profits, data, use, goodwill,
             or other intangible losses.
           </p>
         </section>
@@ -91,7 +91,7 @@ export default function TermsOfService() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">9. Termination</h2>
           <p className="mb-4">
-            We may terminate or suspend your account immediately, without prior notice or liability, 
+            We may terminate or suspend your account immediately, without prior notice or liability,
             for any reason whatsoever, including without limitation if you breach the Terms.
           </p>
         </section>
@@ -99,7 +99,7 @@ export default function TermsOfService() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">10. Changes to Terms</h2>
           <p className="mb-4">
-            We reserve the right to modify or replace these Terms at any time. If a revision is 
+            We reserve the right to modify or replace these Terms at any time. If a revision is
             material, we will try to provide at least 30 days notice prior to any new terms taking effect.
           </p>
         </section>
@@ -107,7 +107,7 @@ export default function TermsOfService() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">11. Governing Law</h2>
           <p className="mb-4">
-            These Terms shall be interpreted and governed by the laws of the jurisdiction in which 
+            These Terms shall be interpreted and governed by the laws of the jurisdiction in which
             our company is established, without regard to its conflict of law provisions.
           </p>
         </section>
