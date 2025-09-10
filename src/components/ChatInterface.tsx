@@ -38,12 +38,17 @@ export default function ChatInterface() {
   }
 
   return (
-    <div className="max-w-2xl mx-auto p-6">
-      <h2 className="text-2xl font-bold mb-6">AI Chat Interface</h2>
+    <div className="w-full max-w-4xl mx-auto p-4 sm:p-6">
+      <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white">
+        AI Chat Interface
+      </h2>
       
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label htmlFor="prompt" className="block text-sm font-medium mb-2">
+          <label 
+            htmlFor="prompt" 
+            className="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300"
+          >
             Enter your prompt:
           </label>
           <Textarea
@@ -53,18 +58,25 @@ export default function ChatInterface() {
             placeholder="Ask me anything..."
             rows={4}
             disabled={loading}
+            className="w-full bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500 dark:focus:ring-blue-400 dark:focus:border-blue-400"
           />
         </div>
         
-        <Button type="submit" disabled={loading || !prompt.trim()}>
+        <Button 
+          type="submit" 
+          disabled={loading || !prompt.trim()}
+          className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600 text-white"
+        >
           {loading ? 'Generating...' : 'Send'}
         </Button>
       </form>
 
       {response && (
         <div className="mt-6">
-          <h3 className="text-lg font-semibold mb-2">Response:</h3>
-          <div className="p-4 bg-gray-50 rounded-lg whitespace-pre-wrap">
+          <h3 className="text-base sm:text-lg font-semibold mb-2 text-gray-900 dark:text-white">
+            Response:
+          </h3>
+          <div className="p-4 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg whitespace-pre-wrap text-gray-900 dark:text-gray-100 text-sm sm:text-base overflow-x-auto">
             {response}
           </div>
         </div>

@@ -29,10 +29,10 @@ const DocumentItem: React.FC<{ doc: Document }> = ({ doc }) => {
     <div
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={drag as any}
-      className={`p-2 border border-gray-300 rounded mb-2 cursor-move ${isDragging ? 'opacity-50' : 'opacity-100'
+      className={`p-3 border border-gray-300 dark:border-gray-600 rounded-lg mb-2 cursor-move transition-all duration-200 bg-white dark:bg-gray-800 text-gray-900 dark:text-white hover:shadow-md ${isDragging ? 'opacity-50' : 'opacity-100'
         }`}
     >
-      {doc.title}
+      <div className="text-sm font-medium">{doc.title}</div>
     </div>
   );
 };
@@ -54,13 +54,23 @@ const Pile: React.FC<{ pile: Pile; onDrop: (docId: number, pileId: string) => vo
     <div
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={drop as any}
-      className={`min-h-32 p-4 border-2 border-dashed border-gray-400 rounded-lg bg-white ${isOver ? 'bg-gray-100' : ''
-        }`}
+      className={`min-h-32 p-4 border-2 border-dashed border-gray-400 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 transition-colors duration-200 ${
+        isOver ? 'bg-gray-100 dark:bg-gray-700 border-blue-400 dark:border-blue-500' : ''
+      }`}
     >
-      <h3 className="text-lg font-semibold mb-2">{pile.name}</h3>
-      {pile.documents.map((doc) => (
-        <DocumentItem key={doc.id} doc={doc} />
-      ))}
+      <h3 className="text-base sm:text-lg font-semibold mb-3 text-gray-900 dark:text-white">
+        {pile.name}
+      </h3>
+      <div className="space-y-2">
+        {pile.documents.map((doc) => (
+          <DocumentItem key={doc.id} doc={doc} />
+        ))}
+      </div>
+      {pile.documents.length === 0 && (
+        <div className="text-sm text-gray-500 dark:text-gray-400 text-center py-4">
+          Drop documents here
+        </div>
+      )}
     </div>
   );
 };
@@ -95,11 +105,17 @@ const LandingPage: React.FC = () => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className="p-6 bg-gray-50 min-h-screen">
-        <h1 className="text-3xl font-bold mb-6">Landing Page - File Explorer Style</h1>
-        <div className="flex gap-6">
+      <div className="p-4 sm:p-6 bg-gray-50 dark:bg-gray-900 min-h-screen">
+        <h1 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white">
+          Document Organization
+        </h1>
+        
+        {/* Desktop Layout */}
+        <div className="hidden lg:flex gap-6">
           <div className="flex-1">
-            <h2 className="text-xl font-semibold mb-4">All Documents</h2>
+            <h2 className="text-lg sm:text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">
+              All Documents
+            </h2>
             <div className="space-y-2">
               {documents.map((doc) => (
                 <DocumentItem key={doc.id} doc={doc} />
@@ -107,8 +123,35 @@ const LandingPage: React.FC = () => {
             </div>
           </div>
           <div className="flex-1">
-            <h2 className="text-xl font-semibold mb-4">Piles</h2>
+            <h2 className="text-lg sm:text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">
+              Piles
+            </h2>
             <div className="space-y-4">
+              {piles.map((pile) => (
+                <Pile key={pile.id} pile={pile} onDrop={handleDrop} />
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile/Tablet Layout */}
+        <div className="lg:hidden space-y-6">
+          <div>
+            <h2 className="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200">
+              All Documents
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              {documents.map((doc) => (
+                <DocumentItem key={doc.id} doc={doc} />
+              ))}
+            </div>
+          </div>
+          
+          <div>
+            <h2 className="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200">
+              Piles
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {piles.map((pile) => (
                 <Pile key={pile.id} pile={pile} onDrop={handleDrop} />
               ))}
