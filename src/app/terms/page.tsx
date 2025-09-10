@@ -118,7 +118,7 @@ export default function TermsOfService() {
             If you have any questions about these Terms of Service, please contact us at:
           </p>
           <p className="mb-4">
-            Email: {process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'legal@notionclone.com'}
+            Email: {process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'info@pilehive.com'}
           </p>
         </section>
       </div>
