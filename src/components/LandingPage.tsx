@@ -27,6 +27,7 @@ const DocumentItem: React.FC<{ doc: Document }> = ({ doc }) => {
 
   return (
     <div
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={drag as any}
       className={`p-2 border border-gray-300 rounded mb-2 cursor-move ${isDragging ? 'opacity-50' : 'opacity-100'
         }`}
@@ -51,6 +52,7 @@ const Pile: React.FC<{ pile: Pile; onDrop: (docId: number, pileId: string) => vo
 
   return (
     <div
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={drop as any}
       className={`min-h-32 p-4 border-2 border-dashed border-gray-400 rounded-lg bg-white ${isOver ? 'bg-gray-100' : ''
         }`}
