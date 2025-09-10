@@ -1,6 +1,7 @@
 "use client"
 
 import LandingPage from "@/components/LandingPage"
+import ChatInterface from "@/components/ChatInterface"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { signIn, signOut, useSession } from "next-auth/react"
@@ -82,7 +83,10 @@ export default function Home() {
       </header>
 
       <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-        <LandingPage />
+        <div className="space-y-8">
+          <ChatInterface />
+          <LandingPage />
+        </div>
       </main>
     </div>
   )
