@@ -1,8 +1,9 @@
 "use client"
 
-import { useSession, signIn, signOut } from "next-auth/react"
-import { Button } from "@/components/ui/button"
+import LandingPage from "@/components/LandingPage"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Button } from "@/components/ui/button"
+import { signIn, signOut, useSession } from "next-auth/react"
 
 export default function Home() {
   const { data: session, status } = useSession()
@@ -28,8 +29,8 @@ export default function Home() {
             </p>
           </div>
           <div>
-            <Button 
-              onClick={() => signIn("google")} 
+            <Button
+              onClick={() => signIn("google")}
               className="w-full"
               size="lg"
             >
@@ -63,8 +64,8 @@ export default function Home() {
                   {session.user?.name}
                 </span>
               </div>
-              <Button 
-                onClick={() => signOut()} 
+              <Button
+                onClick={() => signOut()}
                 variant="outline"
                 size="sm"
               >
@@ -74,23 +75,9 @@ export default function Home() {
           </div>
         </div>
       </header>
-      
+
       <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-        <div className="px-4 py-6 sm:px-0">
-          <div className="text-center">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              Welcome back, {session.user?.name}!
-            </h2>
-            <p className="text-gray-600">
-              Your Notion clone is ready to use. Start creating documents and organizing your thoughts.
-            </p>
-            <div className="mt-8">
-              <Button size="lg">
-                Create Your First Document
-              </Button>
-            </div>
-          </div>
-        </div>
+        <LandingPage />
       </main>
     </div>
   )
