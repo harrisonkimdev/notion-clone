@@ -48,42 +48,31 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="bg-white shadow-sm border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <div className="flex items-center space-x-4">
-              <h1 className="text-xl font-semibold text-gray-900">
-                Pile Hive
-              </h1>
-            </div>
-            <div className="flex items-center space-x-4">
-              <div className="flex items-center space-x-2">
-                <Avatar className="h-8 w-8">
-                  <AvatarImage src={session.user?.image || ""} />
-                  <AvatarFallback>
-                    {session.user?.name?.charAt(0) || "U"}
-                  </AvatarFallback>
-                </Avatar>
-                <span className="text-sm font-medium text-gray-700">
-                  {session.user?.name}
-                </span>
-              </div>
-              <Button
-                onClick={() => signOut()}
-                variant="outline"
-                size="sm"
-              >
-                Sign out
-              </Button>
-            </div>
-          </div>
+    <div className="min-h-screen">
+      {/* User Menu - Fixed in top right */}
+      <div className="fixed top-4 right-4 z-40 flex items-center space-x-3 bg-white/90 backdrop-blur-sm rounded-full px-4 py-2 shadow-lg border border-gray-200">
+        <div className="flex items-center space-x-2">
+          <Avatar className="h-7 w-7">
+            <AvatarImage src={session.user?.image || ""} />
+            <AvatarFallback className="text-xs">
+              {session.user?.name?.charAt(0) || "U"}
+            </AvatarFallback>
+          </Avatar>
+          <span className="text-sm font-medium text-gray-700 hidden sm:block">
+            {session.user?.name}
+          </span>
         </div>
-      </header>
+        <Button
+          onClick={() => signOut()}
+          variant="ghost"
+          size="sm"
+          className="text-gray-600 hover:text-gray-900"
+        >
+          Sign out
+        </Button>
+      </div>
 
-      <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-        <LandingPage />
-      </main>
+      <LandingPage />
     </div>
   )
 }
