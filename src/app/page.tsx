@@ -1,10 +1,10 @@
 "use client"
 
-import LandingPage from "@/components/LandingPage"
 import ChatInterface from "@/components/ChatInterface"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import Header from "@/components/Header"
+import LandingPage from "@/components/LandingPage"
 import { Button } from "@/components/ui/button"
-import { signIn, signOut, useSession } from "next-auth/react"
+import { signIn, useSession } from "next-auth/react"
 import Image from "next/image"
 
 export default function Home() {
@@ -20,24 +20,24 @@ export default function Home() {
 
   if (!session) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
-        <div className="max-w-md w-full space-y-8 p-8 bg-white rounded-lg shadow-lg">
+      <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 px-4">
+        <div className="max-w-md w-full space-y-6 sm:space-y-8 p-6 sm:p-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
           <div className="text-center">
             <Image src="/logos/logo-web.png" alt="Pile Hive Logo"
               width={192} height={192}
               className="mx-auto"
             />
-            <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
+            <h2 className="mt-4 sm:mt-6 text-2xl sm:text-3xl font-extrabold text-gray-900 dark:text-white">
               Welcome!
             </h2>
-            <p className="mt-2 text-sm text-gray-600">
+            <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
               Sign in to start organizing your documents into piles
             </p>
           </div>
           <div>
             <Button
               onClick={() => signIn("google")}
-              className="w-full bg-stone-700 hover:bg-stone-600 text-white"
+              className="w-full bg-stone-700 hover:bg-stone-600 dark:bg-stone-600 dark:hover:bg-stone-500 text-white"
               size="lg"
             >
               Sign in with Google
@@ -49,41 +49,11 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="bg-white shadow-sm border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <div className="flex items-center space-x-4">
-              <h1 className="text-xl font-semibold text-gray-900">
-                Pile Hive
-              </h1>
-            </div>
-            <div className="flex items-center space-x-4">
-              <div className="flex items-center space-x-2">
-                <Avatar className="h-8 w-8">
-                  <AvatarImage src={session.user?.image || ""} />
-                  <AvatarFallback>
-                    {session.user?.name?.charAt(0) || "U"}
-                  </AvatarFallback>
-                </Avatar>
-                <span className="text-sm font-medium text-gray-700">
-                  {session.user?.name}
-                </span>
-              </div>
-              <Button
-                onClick={() => signOut()}
-                variant="outline"
-                size="sm"
-              >
-                Sign out
-              </Button>
-            </div>
-          </div>
-        </div>
-      </header>
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      <Header session={session} />
 
-      <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-        <div className="space-y-8">
+      <main className="max-w-7xl mx-auto py-4 sm:py-6 px-4 sm:px-6 lg:px-8">
+        <div className="space-y-6 sm:space-y-8">
           <ChatInterface />
           <LandingPage />
         </div>
