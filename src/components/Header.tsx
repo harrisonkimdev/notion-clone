@@ -4,10 +4,11 @@ import Logo from "@/components/Logo"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { useTheme } from "@/contexts/ThemeContext"
-import { Menu, Moon, Sun, X } from "lucide-react"
+import { Menu, Moon, Sun, X, Edit } from "lucide-react"
 import { Session } from "next-auth"
 import { signOut } from "next-auth/react"
 import { useState } from "react"
+import Link from "next/link"
 
 interface HeaderProps {
   session: Session | null
@@ -28,6 +29,18 @@ export default function Header({ session }: HeaderProps) {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-4">
+            {/* Editor Link */}
+            <Link href="/editor">
+              <Button
+                variant="ghost"
+                size="sm"
+                className="flex items-center gap-2"
+              >
+                <Edit className="h-4 w-4" />
+                Editor
+              </Button>
+            </Link>
+
             {/* Dark Mode Toggle */}
             <Button
               onClick={toggleTheme}
@@ -103,6 +116,18 @@ export default function Header({ session }: HeaderProps) {
 
               {/* Mobile Actions */}
               <div className="space-y-2">
+                <Link href="/editor" className="block">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="w-full justify-start px-2"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <Edit className="h-4 w-4 mr-2" />
+                    Editor
+                  </Button>
+                </Link>
+
                 <Button
                   onClick={toggleTheme}
                   variant="ghost"
