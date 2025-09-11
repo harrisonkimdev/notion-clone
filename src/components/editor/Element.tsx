@@ -1,36 +1,35 @@
+import { CustomElement } from '@/lib/editor-types'
 import React from 'react'
 import { RenderElementProps } from 'slate-react'
-import { CustomElement } from '@/lib/editor-types'
 
 export const Element = ({ attributes, children, element }: RenderElementProps) => {
-  const style: React.CSSProperties = { 
-    textAlign: (element as { align?: React.CSSProperties['textAlign'] }).align 
+  const style: React.CSSProperties = {
+    textAlign: (element as { align?: React.CSSProperties['textAlign'] }).align
   }
 
   switch (element.type) {
     case 'heading':
       const headingElement = element as Extract<CustomElement, { type: 'heading' }>
       const HeadingTag = `h${headingElement.level}` as keyof React.JSX.IntrinsicElements
-      return (
-        <HeadingTag 
-          {...attributes} 
-          style={style}
-          className={`font-bold leading-tight ${
-            headingElement.level === 1 ? 'text-3xl mb-4' :
-            headingElement.level === 2 ? 'text-2xl mb-3' :
-            headingElement.level === 3 ? 'text-xl mb-2' :
+      const sizeClass = headingElement.level === 1 ? 'text-3xl mb-4' :
+        headingElement.level === 2 ? 'text-2xl mb-3' :
+          headingElement.level === 3 ? 'text-xl mb-2' :
             headingElement.level === 4 ? 'text-lg mb-2' :
-            headingElement.level === 5 ? 'text-base mb-1' :
-            'text-sm mb-1'
-          }`}
-        >
-          {children}
-        </HeadingTag>
+              headingElement.level === 5 ? 'text-base mb-1' :
+                'text-sm mb-1'
+      return React.createElement(
+        HeadingTag,
+        {
+          ...attributes,
+          style,
+          className: `font-bold leading-tight ${sizeClass}`
+        },
+        children
       )
     case 'quote':
       return (
-        <blockquote 
-          {...attributes} 
+        <blockquote
+          {...attributes}
           style={style}
           className="border-l-4 border-gray-300 dark:border-gray-600 pl-4 py-2 italic text-gray-700 dark:text-gray-300 my-4"
         >
@@ -39,8 +38,8 @@ export const Element = ({ attributes, children, element }: RenderElementProps) =
       )
     case 'code':
       return (
-        <pre 
-          {...attributes} 
+        <pre
+          {...attributes}
           style={style}
           className="bg-gray-100 dark:bg-gray-800 rounded-md p-4 font-mono text-sm overflow-x-auto my-4"
         >
@@ -97,9 +96,9 @@ export const Element = ({ attributes, children, element }: RenderElementProps) =
       const imageElement = element as Extract<CustomElement, { type: 'image' }>
       return (
         <div {...attributes} className="my-4">
-          <img 
-            src={imageElement.url} 
-            alt={imageElement.alt || ''} 
+          <img
+            src={imageElement.url}
+            alt={imageElement.alt || ''}
             className="max-w-full h-auto rounded-md"
           />
           {children}
@@ -108,8 +107,8 @@ export const Element = ({ attributes, children, element }: RenderElementProps) =
     case 'link':
       const linkElement = element as Extract<CustomElement, { type: 'link' }>
       return (
-        <a 
-          {...attributes} 
+        <a
+          {...attributes}
           href={linkElement.url}
           target="_blank"
           rel="noopener noreferrer"
