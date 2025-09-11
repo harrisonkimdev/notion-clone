@@ -1,28 +1,27 @@
 'use client'
 
+import { toggleBlock, toggleMark, withCustom } from '@/lib/editor-utils'
+import { useEditorStore } from '@/store/editor-store'
+import isHotkey from 'is-hotkey'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
-import { 
-  createEditor, 
-  Descendant, 
-  Editor, 
-  Range, 
+import {
+  createEditor,
+  Descendant,
+  Editor,
+  Range,
   Transforms
 } from 'slate'
-import { 
-  Slate, 
-  Editable, 
-  withReact, 
-  ReactEditor
-} from 'slate-react'
 import { withHistory } from 'slate-history'
-import isHotkey from 'is-hotkey'
+import {
+  Editable,
+  ReactEditor,
+  Slate,
+  withReact
+} from 'slate-react'
 import { Element } from './Element'
+import { FloatingToolbar } from './FloatingToolbar'
 import { Leaf } from './Leaf'
 import { SlashMenu } from './SlashMenu'
-import { FloatingToolbar } from './FloatingToolbar'
-import { withCustom, toggleMark, toggleBlock } from '@/lib/editor-utils'
-import { CustomText } from '@/lib/editor-types'
-import { useEditorStore } from '@/store/editor-store'
 
 const HOTKEYS = {
   'mod+b': 'bold',
@@ -45,7 +44,7 @@ export const RichTextEditor: React.FC = () => {
     toolbarPosition,
     setToolbarOpen
   } = useEditorStore()
-  
+
   const [slashSearch, setSlashSearch] = useState('')
   const [target, setTarget] = useState<Range | undefined>()
 
@@ -63,11 +62,11 @@ export const RichTextEditor: React.FC = () => {
       if (isHotkey(hotkey)(event)) {
         event.preventDefault()
         const mark = HOTKEYS[hotkey as keyof typeof HOTKEYS]
-        
+
         if (['bulleted-list', 'numbered-list'].includes(mark)) {
           toggleBlock(editor, mark)
         } else {
-          toggleMark(editor, mark as keyof CustomText)
+          toggleMark(editor, mark as "bold" | "code" | "italic" | "underline" | "strikethrough")
         }
         return
       }
@@ -90,7 +89,7 @@ export const RichTextEditor: React.FC = () => {
       if (beforeMatch && afterMatch) {
         setTarget(selection)
         setSlashSearch('')
-        
+
         // Get cursor position for menu
         const domSelection = window.getSelection()
         if (domSelection && domSelection.rangeCount > 0) {
@@ -129,7 +128,7 @@ export const RichTextEditor: React.FC = () => {
       const [start] = Range.edges(editor.selection)
       const range = Editor.range(editor, target, start)
       const text = Editor.string(editor, range)
-      
+
       if (text.startsWith('/')) {
         setSlashSearch(text.slice(1))
       } else {
@@ -146,11 +145,11 @@ export const RichTextEditor: React.FC = () => {
       if (domSelection && domSelection.rangeCount > 0) {
         const range = domSelection.getRangeAt(0)
         const rect = range.getBoundingClientRect()
-        
+
         if (rect.width > 0) {
-          setToolbarOpen(true, { 
-            x: rect.left + rect.width / 2, 
-            y: rect.top 
+          setToolbarOpen(true, {
+            x: rect.left + rect.width / 2,
+            y: rect.top
           })
         }
       }
@@ -163,12 +162,12 @@ export const RichTextEditor: React.FC = () => {
     setSlashMenuOpen(false)
     setTarget(undefined)
     setSlashSearch('')
-    
+
     // Remove the slash character if menu was closed without selection
     if (target) {
       Transforms.delete(editor, { at: target })
     }
-    
+
     ReactEditor.focus(editor)
   }, [editor, target, setSlashMenuOpen])
 
@@ -201,14 +200,14 @@ export const RichTextEditor: React.FC = () => {
             caretColor: 'currentColor',
           }}
         />
-        
+
         <SlashMenu
           isOpen={isSlashMenuOpen}
           position={slashMenuPosition}
           onClose={handleSlashMenuClose}
           search={slashSearch}
         />
-        
+
         <FloatingToolbar
           isOpen={isToolbarOpen}
           position={toolbarPosition}
