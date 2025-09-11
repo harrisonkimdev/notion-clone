@@ -32,27 +32,24 @@ export const authOptions: NextAuthOptions = {
   secret: secretValue,
   // log NextAuth internals and events to the server console for debugging
   logger: {
-    error(code: any, ...rest: any[]) {
+    error(code: string | Error, ...rest: unknown[]) {
       console.error("nextauth:logger:error", code, ...rest)
     },
-    warn(code: any, ...rest: any[]) {
+    warn(code: string | Error, ...rest: unknown[]) {
       console.warn("nextauth:logger:warn", code, ...rest)
     },
-    debug(code: any, ...rest: any[]) {
+    debug(code: string | Error, ...rest: unknown[]) {
       console.debug("nextauth:logger:debug", code, ...rest)
     },
-  } as any,
+  },
   events: {
-    async error(message: any) {
-      console.error("nextauth:event:error", message)
-    },
-    async signIn(message: any) {
+    async signIn(message: { user: unknown; account: unknown; profile?: unknown }) {
       console.log("nextauth:event:signIn", message)
     },
-    async createUser(message: any) {
+    async createUser(message: { user: unknown }) {
       console.log("nextauth:event:createUser", message)
     },
-  } as any,
+  },
   callbacks: {
     // attach prisma user id to session for client-side usage
     session: ({ session, token }) => ({
