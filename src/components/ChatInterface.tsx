@@ -30,7 +30,7 @@ export default function ChatInterface() {
       } else {
         setResponse(`Error: ${data.error}`)
       }
-    } catch (error) {
+    } catch {
       setResponse('Network error occurred')
     } finally {
       setLoading(false)
