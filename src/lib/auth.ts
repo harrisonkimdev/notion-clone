@@ -43,9 +43,6 @@ export const authOptions: NextAuthOptions = {
     },
   },
   events: {
-    async error(message: { message: string; stack?: string }) {
-      console.error("nextauth:event:error", message)
-    },
     async signIn(message: { user: unknown; account: unknown; profile?: unknown }) {
       console.log("nextauth:event:signIn", message)
     },
