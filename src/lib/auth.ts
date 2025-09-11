@@ -34,13 +34,13 @@ export const authOptions: NextAuthOptions = {
   secret: secretValue,
   // log NextAuth internals and events to the server console for debugging
   logger: {
-    error(code: unknown, ...rest: unknown[]) {
+    error(code: string | Error, ...rest: unknown[]) {
       console.error("nextauth:logger:error", code, ...rest)
     },
-    warn(code: unknown, ...rest: unknown[]) {
+    warn(code: string | Error, ...rest: unknown[]) {
       console.warn("nextauth:logger:warn", code, ...rest)
     },
-    debug(code: unknown, ...rest: unknown[]) {
+    debug(code: string | Error, ...rest: unknown[]) {
       console.debug("nextauth:logger:debug", code, ...rest)
     },
   },

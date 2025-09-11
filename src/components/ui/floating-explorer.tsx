@@ -191,10 +191,8 @@ FloatingExplorer.displayName = "FloatingExplorer"
 
 const FloatingExplorerTrigger = React.forwardRef<
   HTMLButtonElement,
-  React.ButtonHTMLAttributes<HTMLButtonElement> & {
-    asChild?: boolean
-  }
->(({ className, children, asChild = false, ...props }, ref) => {
+  React.ButtonHTMLAttributes<HTMLButtonElement>
+>(({ className, children, ...props }, ref) => {
   return (
     <Button
       ref={ref}
